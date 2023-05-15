@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 """
 creates a flask web app and sets a few returns for 2 index pages
+Routes:
+/: display “Hello HBNB!”
+/hbnb: display “HBNB”
 """
 
 from flask import Flask
