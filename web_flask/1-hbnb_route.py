@@ -14,17 +14,15 @@ app = Flask(__name__)
 @app.route("/", strict_slashing=False)
 
 def index():
-    """
-    in the home page displays hello hbnb
-    """
+    """ in the home page displays hello hbnb """
+    
     return "Hello HBNB"
 
 @app.route("/", strict_slashing=False)
 
 def HBNB():
-    """
-    in the hbnb index page returns hbnb
-    """
+    """ in the hbnb index page returns hbnb """
+    
     return "HBNB"
 
 if __name__ == "__main__":
