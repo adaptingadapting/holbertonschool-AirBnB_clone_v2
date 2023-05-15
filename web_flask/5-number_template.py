@@ -33,8 +33,9 @@ def display_int(n):
     return f"{n} is a number"
 
 
-@app.route('/number_template/<int:n>', strict_slashes=False)
-def display_html(n):
+@app.route("/number_template/<int:n>", strict_slashes=False)
+def print_int_html(n):
+    """ displays a HTML page only if n is an integer"""
     return render_template('5-number.html', n=n)
 
 
