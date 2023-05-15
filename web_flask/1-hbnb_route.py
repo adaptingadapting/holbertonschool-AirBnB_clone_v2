@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-creates a flask web app and sets a few returns for 2 index pages
+starts a Flask web application:
+Its listening on 0.0.0.0, port 5000
 Routes:
 /: display “Hello HBNB!”
 /hbnb: display “HBNB”
