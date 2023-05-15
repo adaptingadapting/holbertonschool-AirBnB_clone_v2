@@ -10,6 +10,7 @@ app = Flask(__name__)
 
 @app.route('/cities_by_states', strict_slash=False)
 def cities_by_states():
+    """ commened function totally nicely commented """
     states_dict = storage.all(State)
     dict = {}
     for val in states_dict.values():
