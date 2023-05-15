@@ -1,31 +1,32 @@
 #!/usr/bin/python3
 """script that starts a Flask web application"""
 
-from flask import Flask, render_template
+from flask import Flask
+from flask import render_template
 from models import storage
 from models.state import State
 
 app = Flask(__name__)
 
 
-@app.route('/states', strict_slashes=False)
-def states_list():
-    states = storage.all(State).values()
-    sorted_states = sorted(states, key=lambda state: state.name)
-    return render_template('7-states_list.html', states=sorted_states)
+@app.route("/states", strict_slashes=False)
+def show_states():
+    """ displays a HTML page with the list of all State objects in the DB"""
+    return render_template('9-states.html', state=storage.all(State))
 
 
-@app.route('/states/<id>')
-def state_cities(id):
-    state = storage.get(State, id)
-    if state is None:
-        return render_template('9-states.html', found_id=False)
-    cities = sorted(state.cities, key=lambda city: city.name)
-    return render_template('9-states.html', state=state, cities=cities)
+@app.route("/states/<id>", strict_slashes=False)
+def show_cities(id):
+    """ displays a HTML page with the list of all cities of a State"""
+    for st in storage.all(State).values():
+        if st.id == id:
+            return render_template('9-states.html', state=st)
+    return render_template('9-states.html')
 
 
 @app.teardown_appcontext
-def teardown_db(exception):
+def teardown(response_or_exc):
+    """ removes the current SQLAlchemy Session"""
     storage.close()
 
 
