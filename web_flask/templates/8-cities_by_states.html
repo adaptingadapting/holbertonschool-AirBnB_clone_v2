@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <HTML lang="en">
-<HEAD>
-    <TITLE>HBNB</TITLE>
-</HEAD>
-<BODY>
-    <H1>States</H1>
-    <UL>
-        {% for state, cities in dict.items() %}
-        <LI>{{state.id}}: <B>{{state.name}}</B></LI>
+    <HEAD>
+        <TITLE>HBNB</TITLE>
+    </HEAD>
+    <BODY>
+        <H1>States</H1>
         <UL>
-            {% for city in cities %}
-            <ul>{{city.id}}: <B>{{city.name}}</B></ul>
+        {% for state in states.values()|sort(attribute='name') %}
+            <LI>{{ state.id }}: <B>{{ state.name }}</B>
+                <UL>
+                {% for city in state.cities|sort(attribute='name') %}
+                    <LI>{{ city.id }}: <B>{{ city.name }}</LI>
+                {% endfor %}
+                </UL>
+            </LI>
+        {% endfor %}
         </UL>
-        {% endfor %}
-        {% endfor %}
-    </UL>
-</BODY>
+    </BODY>
 </HTML>
