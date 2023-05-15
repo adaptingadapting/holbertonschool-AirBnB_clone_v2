@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <HTML lang="en">
-
 <HEAD>
     <TITLE>HBNB</TITLE>
 </HEAD>
-
 <BODY>
     <H1>States</H1>
     <UL>
         {% for state, cities in dict.items() %}
         <LI>{{state.id}}: <B>{{state.name}}</B></LI>
         <UL>
-            {%for city in cities %}
+            {% for city in cities %}
             <ul>{{city.id}}: <B>{{city.name}}</B></ul>
         </UL>
         {% endfor %}
         {% endfor %}
     </UL>
 </BODY>
-
 </HTML>
